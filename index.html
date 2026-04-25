@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -174,6 +175,16 @@
       border-radius: 2px;
       padding: 28px 24px;
     }
+    .pain-card svg,
+    .ben-item svg {
+      width: 28px;
+      height: 28px;
+      color: var(--rose);
+      stroke-width: 1.5;
+      display: block;
+      margin-bottom: 14px;
+    }
+
     .pain-card h4 {
       font-size: 19px;
       margin-bottom: 8px;
@@ -208,35 +219,25 @@
     }
 
     /* ═══════════════════════════════════
+       5. SOLUTION — highlighted paras
+    ═══════════════════════════════════ */
+    .sol-hl {
+      background: rgba(92, 45, 94, 0.05);
+      border-left: 3px solid var(--rose);
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      font-style: italic;
+      font-size: 22px;
+    }
+
+    /* ═══════════════════════════════════
        PADMA V. PULL QUOTE
     ═══════════════════════════════════ */
     #padma {
       background: var(--cream-alt);
       padding: 72px 24px;
     }
-    .pq {
-      max-width: 680px;
-      margin: 0 auto;
-      border-left: 3px solid var(--rose);
-      padding-left: 36px;
-    }
-    .pq blockquote {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(18px, 2.4vw, 21px);
-      font-style: italic;
-      color: var(--charcoal);
-      line-height: 1.78;
-      margin-bottom: 20px;
-    }
-    .pq cite {
-      font-family: 'Lato', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--rose);
-      font-style: normal;
-    }
+    .pq-wrap { max-width: 680px; margin: 0 auto; }
 
     /* ═══════════════════════════════════
        6. BENEFITS
@@ -337,57 +338,60 @@
       color: var(--rose);
       font-style: normal;
     }
+    .tp-note {
+      font-family: 'Lato', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--plum);
+      background: var(--rose-light);
+      display: inline-block;
+      padding: 7px 16px;
+      border-radius: 2px;
+      margin-top: 44px;
+    }
 
     /* ═══════════════════════════════════
        10. ABOUT
     ═══════════════════════════════════ */
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 300px;
-      gap: 64px;
+      grid-template-columns: 360px 1fr;
+      grid-template-areas:
+        "photo title"
+        "photo body";
+      column-gap: 64px;
       align-items: start;
     }
-    .about-photo-wrap { position: relative; flex-shrink: 0; }
-    .about-photo-wrap::after {
-      content: '';
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      right: -14px;
-      bottom: -14px;
-      border: 2px solid var(--rose-light);
-      border-radius: 2px;
-      z-index: 0;
-      pointer-events: none;
-    }
+    .about-photo-wrap { grid-area: photo; display: flex; align-items: center; }
+    .about-title { grid-area: title; }
+    .about-body { grid-area: body; }
     .about-photo {
       width: 100%;
       height: auto;
       display: block;
-      border-radius: 2px;
-      position: relative;
-      z-index: 1;
-      object-fit: cover;
+      border-radius: 8px;
     }
-    .about-text .sh { margin-bottom: 28px; }
-    .about-text p { font-size: 16px; line-height: 1.88; }
-    .tp-badge {
-      display: inline-block;
-      margin-top: 20px;
-      font-family: 'Lato', sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      color: var(--plum);
-      background: var(--rose-light);
-      padding: 7px 16px;
-      border-radius: 2px;
+    .about-title .sh { margin-bottom: 28px; }
+    .about-body p { font-size: 16px; line-height: 1.88; }
+
+    /* ── Problem section ── */
+    .prob-grid {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .prob-photo {
+      width: 100%;
+      border-radius: 4px;
+      display: block;
     }
 
     /* ═══════════════════════════════════
        11. PRICING
     ═══════════════════════════════════ */
-    .p-table-wrap { overflow-x: auto; margin-bottom: 14px; }
+    .p-table-wrap { overflow-x: auto; margin-top: 10px; margin-bottom: 14px; }
     .p-table {
       width: 100%;
       border-collapse: collapse;
@@ -458,27 +462,14 @@
       flex-wrap: wrap;
       margin-bottom: 60px;
     }
-    .logo-ph {
-      width: 160px;
-      height: 72px;
-      border: 1px solid var(--rose);
-      border-radius: 2px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Lato', sans-serif;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--rose);
-      text-align: center;
-      line-height: 1.5;
-      padding: 8px;
+    .logo-img {
+      height: 92px;
+      width: auto;
+      object-fit: contain;
     }
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 12px;
       margin-bottom: 48px;
     }
@@ -493,14 +484,6 @@
       margin-bottom: 6px;
     }
     .stat-l { font-size: 12px; color: var(--soft); line-height: 1.4; }
-    .cert-list {
-      list-style: none;
-      font-size: 14px;
-      color: var(--soft);
-      line-height: 2.4;
-      margin-bottom: 20px;
-    }
-    .priv { font-size: 12px; font-style: italic; color: var(--rose); }
 
     /* ═══════════════════════════════════
        13. RECIPROCITY  (dark bg)
@@ -543,22 +526,6 @@
     /* ═══════════════════════════════════
        15. COST
     ═══════════════════════════════════ */
-    .cost-lines {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(20px, 2.8vw, 26px);
-      font-style: italic;
-      line-height: 2.5;
-      color: var(--charcoal);
-      margin-bottom: 40px;
-    }
-    .cost-kicker {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(17px, 2.2vw, 21px);
-      color: var(--plum);
-      max-width: 560px;
-      margin: 0 auto;
-      line-height: 1.7;
-    }
 
     /* ═══════════════════════════════════
        16. FINAL CTA  (dark bg)
@@ -606,6 +573,13 @@
     @media (max-width: 780px) {
       .section { padding: 64px 20px; }
 
+      .prob-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .prob-img-wrap { order: 2; }
+      .prob-text     { order: 1; }
+
       .pain-grid,
       .ben-grid,
       .inside-grid,
@@ -614,16 +588,16 @@
 
       .about-grid {
         grid-template-columns: 1fr;
-        gap: 0;
+        grid-template-areas:
+          "title"
+          "photo"
+          "body";
+        row-gap: 32px;
+        column-gap: 0;
       }
-      .about-photo-wrap {
-        max-width: 260px;
-        margin: 0 auto 44px;
-        order: -1;
-      }
-      .about-photo-wrap::after { display: none; }
+      .about-photo-wrap { max-width: 280px; margin: 0 auto; }
 
-      .stats-grid { grid-template-columns: repeat(3, 1fr); }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
 
       #padma { padding: 56px 20px; }
       .pq { padding-left: 24px; }
@@ -632,8 +606,7 @@
     }
 
     @media (max-width: 520px) {
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .logo-ph { width: 140px; height: 64px; }
+      .logo-img { height: 72px; }
     }
   </style>
 </head>
@@ -645,8 +618,8 @@
 <section id="hero">
   <span class="hero-pre">Atomic Heart Academy presents</span>
   <h1 class="hero-h1">Somatic Circles™</h1>
-  <p class="hero-sub">Your body has been holding it. It's time to let it go.</p>
-  <a href="#claim-your-spot" class="btn btn-plum">Claim Your Spot</a>
+  <p class="hero-sub">Your body has been holding unhelpful patterns. It's time to let them go.</p>
+  <a href="https://link.holistichealingwithb.com/scorglpabfold" class="btn btn-plum">Claim Your Seat</a>
 </section>
 
 
@@ -654,12 +627,19 @@
      2. PROBLEM
 ══════════════════════════════════════ -->
 <section class="section" id="problem">
-  <div class="wrap">
-    <h2 class="sh">You've Done The Work. So Why Are You Still Stuck?</h2>
-    <p>You've read the books. Done the therapy. Tried the practices. You have more self-awareness than most people around you.</p>
-    <p>And yet, in the moments that matter, you still react the same way. The tension comes back. Your old habits win again. The words don't come out. The pain returns.</p>
-    <p>Every time, you promise yourself it'll be different. And every time, something takes over that you can't seem to stop.</p>
-    <p class="closing-q">How long have you been here?</p>
+  <div class="wrap-wide">
+    <div class="prob-grid">
+      <div class="prob-img-wrap">
+        <img src="Bhavya%201.png" alt="Bhavya R" class="prob-photo" loading="lazy">
+      </div>
+      <div class="prob-text">
+        <h2 class="sh">You've Done The Work. So Why Are You Still Stuck?</h2>
+        <p>You've read the books. You've done the therapy. You've tried the practices and have more self-awareness than most people around you.</p>
+        <p>And yet, in the moments that matter, you still react the same way despite your best intentions. The tension comes back. Your old habits win again. You repeat the same cycle.</p>
+        <p>Each time, you promise yourself you'll be different. And each time, something takes over that you can't seem to control.</p>
+        <p class="closing-q">How long have you been here?</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -672,33 +652,39 @@
     <h2 class="sh">You Know This Feeling.</h2>
     <div class="pain-grid">
       <div class="pain-card">
+        <i data-lucide="zap"></i>
         <h4>Reactivity in Relationships</h4>
-        <p>You know how to communicate better. But you still snap, shut down, or withdraw when it counts.</p>
+        <p>You know how to communicate better. But you still snap, shut down, or withdraw when it really counts.</p>
       </div>
       <div class="pain-card">
+        <i data-lucide="users"></i>
         <h4>People-Pleasing Tendencies</h4>
         <p>You say yes when you mean no, and abandon your own needs to keep the peace.</p>
       </div>
       <div class="pain-card">
+        <i data-lucide="activity"></i>
         <h4>Chronic, Recurring Pain</h4>
         <p>You've tried the treatments, the therapies, the tools. The same discomfort keeps coming back.</p>
       </div>
       <div class="pain-card">
+        <i data-lucide="battery-warning"></i>
         <h4>Constant Exhaustion</h4>
-        <p>You're doing everything right, and your body still feels like it's running on empty.</p>
+        <p>You're doing everything right, but your body still feels like it's running on empty.</p>
       </div>
       <div class="pain-card">
+        <i data-lucide="split"></i>
         <h4>Fear-Led Choices</h4>
-        <p>You hold back, overthink, stay hypervigilant. Fear quietly runs the show.</p>
+        <p>You overthink, hold back, stay hypervigilant. Your fears are quietly running the show.</p>
       </div>
       <div class="pain-card">
-        <h4>Stuck Identity</h4>
-        <p>You wonder quietly if this is just who you are, and whether anything can actually change that.</p>
+        <i data-lucide="lock"></i>
+        <h4>Feeling Helpless</h4>
+        <p>You wonder quietly if this is just who you are, and whether you can actually do something about it.</p>
       </div>
     </div>
-    <p class="insight center">These are long-standing patterns held in your nervous system. Insights got you this far, but only the body can settle what the body holds.</p>
+    <p class="insight center">All of these are long-standing patterns held in your nervous system from before you had the words to express what you feel.<br>Insights got you this far, but only the body knows how to settle what it still holds.</p>
     <div class="center">
-      <a href="#claim-your-spot" class="btn btn-plum">Claim Your Spot</a>
+      <a href="https://link.holistichealingwithb.com/scorglpprob" class="btn btn-plum">I'm Ready to Break These Patterns at the Root</a>
     </div>
   </div>
 </section>
@@ -709,11 +695,11 @@
 ══════════════════════════════════════ -->
 <section class="section" id="transition">
   <div class="wrap">
-    <h2 class="sh">What If Your Body Already Knows How to Heal?</h2>
-    <p>You haven't failed to heal. You've just been given tools that work from the neck up, for a problem that lives below it.</p>
-    <p>Insight got you this far. And it matters. But there's a layer beneath the thinking mind that insight simply cannot touch, where the tension lives, where the habits are wired, where the words get stuck.</p>
-    <p>That's not a personal failing. That's how your nervous system got wired.</p>
-    <p class="standout">And nervous system wiring can change.</p>
+    <h2 class="sh">What If Your Body Already Knows What and How to Heal?</h2>
+    <p>What if it's not that you failed to heal? What if you've just been given tools that work from the neck up, for a problem that lives below it?</p>
+    <p>Your understanding of your patterns got you this far. And it matters. But there's a layer beneath the thinking mind that insight simply cannot touch, where the tension lives, where the habits are wired, where words are of no use.</p>
+    <p>You can't label that as personal failure. That's how your nervous system got wired before you had a say.</p>
+    <p class="standout">And nervous system wiring can be changed.</p>
   </div>
 </section>
 
@@ -723,13 +709,13 @@
 ══════════════════════════════════════ -->
 <section class="section alt" id="solution">
   <div class="wrap">
-    <h2 class="sh">Introducing Somatic Circles™</h2>
-    <p>At the heart of Somatic Circles is TRE, Tension and Trauma Releasing Exercises. A simple, body-based practice developed by Dr. David Berceli that activates your nervous system's natural ability to release stored stress and tension.</p>
-    <p>Watch any animal after a threatening encounter. They shake. Then they move on, completely settled. No therapy. No processing. No effort.</p>
+    <h2 class="sh">Introducing Somatic Circles™!</h2>
+    <p class="sol-hl">At the heart of Somatic Circles™ is TRE™, Tension and Trauma Releasing Exercises. A simple, body-based practice developed by Dr. David Berceli that activates your nervous system's natural ability to release stored stress and tension.</p>
+    <p>Watch any animal after a threatening encounter. They shake involuntarily. Then they move on, completely settled. No therapy. No processing. No effort.</p>
     <p>That shaking is the nervous system completing its stress cycle and returning to baseline.</p>
-    <p>Humans have the same mechanism. We've just spent a lifetime learning to suppress it.</p>
-    <p>In the safe, guided setting of Somatic Circles, you can access and reactivate that mechanism on-demand. Your body can gently release what it has been holding for years, finally freeing up your nervous system for a new identity to unfold. Over time, your baseline shifts. The things that used to send you spiraling start to lose their grip. You become harder to dysregulate, easier to be with, and more present in your own life.</p>
-    <p>You don't need to relive anything. You don't need to talk about it. Your body does the work.</p>
+    <p>Humans have the same release mechanism. We've just spent a lifetime learning to suppress it.</p>
+    <p class="sol-hl">In the safe, guided environment of Somatic Circles™, you learn to access and reactivate that mechanism on-demand. Your body can gently release what it has been holding for years, finally freeing up your nervous system for a new identity to unfold. Over time, your baseline shifts and your capacity expands. The things that used to send you spiraling start to lose their grip. You become harder to dysregulate, easier to be with, and more present in your own life.</p>
+    <p>You don't need to relive anything. You don't need to talk about it. You just need to allow your body to do the work.</p>
     <p>Your body already knows what to release. It just needs your permission to do so.</p>
   </div>
 </section>
@@ -739,9 +725,11 @@
      PADMA V. TESTIMONIAL
 ══════════════════════════════════════ -->
 <section id="padma">
-  <div class="pq">
-    <blockquote>"I recently attended a Trauma Release Exercise session with Bhavya, and it was a truly powerful experience. Bhavya was incredibly patient and supportive as she guided us step by step through all the exercises, ensuring we felt safe and comfortable throughout the process. Her calm presence and clear instructions made it easy to trust the process and allow our bodies to tremor naturally. It turned out to be a deeply cathartic experience. I felt lighter, more grounded, and surprisingly relaxed afterward."</blockquote>
-    <cite>Padma V., TRE Student</cite>
+  <div class="pq-wrap">
+    <div class="t-card">
+      <blockquote style="font-size:22px;">"I recently attended a Trauma Release Exercise session with Bhavya, and it was a truly powerful experience. Bhavya was incredibly patient and supportive as she guided us step by step through all the exercises, ensuring we felt safe and comfortable throughout the process. Her calm presence and clear instructions made it easy to trust the process and allow our bodies to tremor naturally. It turned out to be a deeply cathartic experience. I felt lighter, more grounded, and surprisingly relaxed afterward."</blockquote>
+      <cite>Padma Vaela, MD</cite>
+    </div>
   </div>
 </section>
 
@@ -751,32 +739,41 @@
 ══════════════════════════════════════ -->
 <section class="section" id="benefits">
   <div class="wrap-wide">
-    <h2 class="sh" style="max-width:760px;">What Becomes Possible When Your Nervous System Is Free</h2>
+    <h2 class="sh" style="max-width:760px;">What Becomes Possible For You When Your Nervous System Is Free</h2>
     <div class="ben-grid">
       <div class="ben-item">
-        <h4>Relief from Persistent Pain</h4>
-        <p>When your nervous system stops bracing, your body stops hurting. Chronic tension, recurring pain, and physical discomfort that never fully goes away, these aren't just physical. They're stored. And they can be released.</p>
-      </div>
-      <div class="ben-item">
+        <i data-lucide="brain"></i>
         <h4>Mental Clarity and Calm</h4>
         <p>The mental noise, the overthinking, the anxiety that hums in the background, these are nervous system states, not personality traits. As your system regulates, the noise quiets. Thinking becomes clearer. Decisions become easier.</p>
       </div>
       <div class="ben-item">
-        <h4>Connection and Trust in Your Body</h4>
-        <p>You stop fighting your body and start listening to it. Its signals begin to make sense. You feel at home in yourself in a way that's hard to describe until you've experienced it.</p>
+        <i data-lucide="heart"></i>
+        <h4>Relief from Persistent Pain</h4>
+        <p>When your nervous system stops bracing, your body starts to relax. Chronic tightness, recurring pain, and physical discomfort that never fully goes away, these aren't just physical. They're stored emotions and stress responses. And they can be released.</p>
       </div>
       <div class="ben-item">
+        <i data-lucide="shield"></i>
+        <h4>Connection, Safety and Trust in Your Body</h4>
+        <p>You stop fighting with your body and start listening to it. Its signals begin to make sense. You feel so much more safe and at home in yourself: self-love in a way that's hard to describe until you've experienced it.</p>
+      </div>
+      <div class="ben-item">
+        <i data-lucide="scale"></i>
         <h4>Balance and Well-Being</h4>
-        <p>Not the kind that comes from doing more of the right things. The kind that comes from your system no longer working against you. Grounded, centered, and steady, as a baseline, not an achievement.</p>
+        <p>Not the kind that comes externally from doing more of the "right" things. The kind that comes internally from your system finally working with you. Grounded, centered, and steady, as your default baseline.</p>
       </div>
       <div class="ben-item">
+        <i data-lucide="wind"></i>
         <h4>Emotional Freedom</h4>
-        <p>The emotions that used to flood you or shut you down become more workable. You feel them without being consumed by them. You move through them instead of around them.</p>
+        <p>The emotions that used to flood you or shut you down become more workable. You become available to feel them without being consumed by them. You move through them instead of around them.</p>
       </div>
       <div class="ben-item">
+        <i data-lucide="sparkles"></i>
         <h4>A New Identity</h4>
-        <p>This is the deepest benefit and the hardest to articulate. When the patterns that have defined you for years begin to loosen, something underneath them starts to emerge. A version of you that was always there, waiting.</p>
+        <p>This is the deepest benefit and the hardest to articulate. When unhelpful patterns that have defined you for years begin to loosen and release, it creates room for what's underneath to emerge. The version of you that was always there, waiting to shine.</p>
       </div>
+    </div>
+    <div style="text-align:center; margin-top:48px;">
+      <a href="https://link.holistichealingwithb.com/scorglpben" class="btn btn-plum">Join Somatic Circles™</a>
     </div>
   </div>
 </section>
@@ -788,32 +785,32 @@
 <section class="section alt" id="whats-inside">
   <div class="wrap">
     <h2 class="sh">What's Inside Somatic Circles™</h2>
-    <p>Somatic Circles is a 6-week small-group program where you learn TRE from the ground up, with guided support, a small honest community, and everything you need to make it a practice for life.</p>
+    <p>Somatic Circles™ is a 6-week small-group program where you learn TRE™ from the ground up, with guided support, a small honest community, and everything you need to make it a practice for life.</p>
     <p>Over 6 weeks you will:</p>
     <div class="inside-grid">
       <div class="inside-card">
-        <h4>Learn TRE step by step</h4>
+        <h4>Learn TRE™ step-by-step</h4>
         <p>With full guidance so you can practice safely and independently, for life.</p>
       </div>
       <div class="inside-card">
         <h4>Understand your own nervous system</h4>
-        <p>Recognise your patterns, what drives them, and how to work with them rather than against them.</p>
+        <p>Recognise your patterns, what drives them, and how to work with them rather than avoid them.</p>
       </div>
       <div class="inside-card">
         <h4>Build a practice that actually sticks</h4>
-        <p>Not another thing you try for two weeks. A self-regulation tool you'll return to for years.</p>
+        <p>Not another thing you try and drop, but a self-regulation tool to realistically integrate into your life.</p>
       </div>
       <div class="inside-card">
         <h4>Be held in a small, honest community</h4>
-        <p>Six people doing the same work, in a container that's safe enough to actually go there.</p>
+        <p>With people doing the same work, in a space that's safe enough to be authentic.</p>
       </div>
     </div>
     <table class="fmt-table">
       <tbody>
         <tr><td>Format</td><td>One 90-minute session per week</td></tr>
-        <tr><td>Where</td><td>Online via Zoom, or in-person in Bangalore</td></tr>
+        <tr><td>Where</td><td>Online via Zoom OR In-Person in Bangalore</td></tr>
         <tr><td>Group size</td><td>6 people maximum</td></tr>
-        <tr><td>Support</td><td>Private WhatsApp group between sessions</td></tr>
+        <tr><td>Support</td><td>Private WhatsApp group between sessions to share, and stay accountable and motivated</td></tr>
         <tr><td>Duration</td><td>6 weeks</td></tr>
       </tbody>
     </table>
@@ -826,14 +823,15 @@
 ══════════════════════════════════════ -->
 <section class="section center" id="exclusivity">
   <div class="wrap">
-    <h2 class="sh">This Is a Small Container. Intentionally.</h2>
+    <h2 class="sh">This Is a Small Container.<br>By Intentional Design.</h2>
     <div class="excl-body">
-      <p>Somatic Circles runs with a maximum of 6 people per group. Not as a marketing tactic, but because this work requires safety, and safety requires intimacy.</p>
-      <p>In a group this size, you are not a face in a crowd. You are known. Your process is witnessed. The group itself becomes part of the healing.</p>
-      <p>Each round, there are 6 spots for online and 6 spots for in-person. Once they fill, the next cohort opens in 6 to 8 weeks.</p>
+      <p>Somatic Circles™ runs with a maximum of 6 people per group. Not as a marketing tactic, but because this work requires safety, and safety requires intimacy.</p>
+      <p>In a group this size, it's harder to be just some face in a crowd. You have the space to meet others on similar journeys. You can receive and give meaningful support. The group becomes part of your healing.</p>
+      <p>Only 6 circles this May–June (3 offline in Bengaluru, 3 online for everyone around the globe). 6 spots for each circle.</p>
+      <p>Once these fill, we close enrollments. The next cohort only begins later in 2026.</p>
       <p>If you've been waiting for the right moment, this is a good one to take seriously.</p>
     </div>
-    <a href="#claim-your-spot" class="btn btn-plum">Claim Your Spot</a>
+    <a href="https://link.holistichealingwithb.com/scorglpwiifm" class="btn btn-plum">Claim Your Seat For Somatic Circles™</a>
   </div>
 </section>
 
@@ -847,20 +845,31 @@
     <div class="t-grid">
       <div class="t-card">
         <blockquote>"I spent more than a year feeling disconnected and uncomfortable in my own home, stuck in a cycle of unrest. In a single session, she helped me move past those barriers. I'm finally back in my own bed and feeling like myself again. If you feel stuck or unsettled, do yourself a favor and book a session with her."</blockquote>
-        <cite>Anonymous</cite>
+        <cite>Kelli, FL, USA</cite>
       </div>
       <div class="t-card">
         <blockquote>"I've had several sessions with Bhavya as a coach, and every time, I learn something new about myself that helps me get closer to my goals. What's even more impressive is her understanding of how the body and mind are connected. She doesn't give advice based on guesswork, everything she suggests is backed by her own experience and science. Committing to her coaching guarantees a positive transformation and clarity in your life."</blockquote>
-        <cite>Anonymous</cite>
+        <cite>Rajiv, TN, India</cite>
       </div>
       <div class="t-card">
         <blockquote>"Talking through relationship highs and lows with Bhavya was immensely helpful. Every conversation left me feeling a little lighter and gave me a sense of agency."</blockquote>
-        <cite>Anonymous</cite>
+        <cite>Meena, MN, USA</cite>
+      </div>
+      <div class="t-card">
+        <blockquote>"Thank you, Bhavya. It's been an amazing session. Somewhere, somehow, these simple exercises... They look simple, but the way they go into the depth for us as a soul, it's different."</blockquote>
+        <cite>Sanj, Lusaka, Zambia</cite>
+      </div>
+      <div class="t-card">
+        <blockquote>"The way you took us through the entire process... It was so calming, it was so comforting. It opened [me] up, it made me face what I didn't want to face... It was very powerful."</blockquote>
+        <cite>Aastha, RJ, India</cite>
       </div>
       <div class="t-card">
         <blockquote>"Within a few minutes of our conversation she took me to a place where I usually feel hesitant to go. The process immediately made me feel lighter, felt like a mass disappearing from my head. The world needs you."</blockquote>
-        <cite>Anonymous</cite>
+        <cite>Sarika, TN, India</cite>
       </div>
+    </div>
+    <div class="center">
+      <span class="tp-note">★ Rated 4.3 on Trustpilot</span>
     </div>
   </div>
 </section>
@@ -872,17 +881,20 @@
 <section class="section" id="about">
   <div class="wrap-wide">
     <div class="about-grid">
-      <div class="about-text">
-        <h2 class="sh">Hi, I'm Bhavya!</h2>
-        <p>As a certified Hypnotherapist, TRE Provider, and Life Coach, I specialise in helping people uncover and resolve the emotional and mental blocks that show up as physical pain, chronic discomfort, and patterns that won't budge, in their bodies, their relationships, and their work.</p>
-        <p>My work is personal, not just professional. I've spent years battling chronic knee pain, weight gain, food allergies, and relationship patterns that kept repeating. I've been where you are, and I know what it's like to do everything right and still feel stuck.</p>
-        <p>That's what brought me to somatic work. And that's what brought me here.</p>
-        <p>My mission is to help you reconnect with your body's wisdom and build the strongest possible foundation for the rest of your life, so you can live with more freedom, more presence, and more of yourself.</p>
-        <p>If any of this resonates, I'd love to have you in the circle.</p>
-        <span class="tp-badge">★ Rated 4.3 on Trustpilot</span>
-      </div>
       <div class="about-photo-wrap">
-        <img src="Bhavya%20R%20Profile%203.JPG" alt="Bhavya R" class="about-photo" loading="lazy">
+        <img src="Bhavya%20Profile.png" alt="Bhavya R" class="about-photo" loading="lazy">
+      </div>
+      <div class="about-title">
+        <h2 class="sh">Hi, I'm Bhavya!</h2>
+      </div>
+      <div class="about-body">
+        <p>As a certified Hypnotherapist, TRE™ Provider, and Life Coach, I specialize in helping people uncover and resolve the emotional and mental blocks that manifest as physical pain and chronic discomfort. These are often the same blocks holding them back from living their best relationships and careers.</p>
+        <p>My work isn't just professional... It's not fun battling years of chronic anything, not knee pain, weight gain, food allergies, or relationship patterns... I've been there, and I know what it's like to do everything "right" and still feel stuck.</p>
+        <p>That's what brought me to somatic work. And that's what brought me here.</p>
+        <p>If I can turn my life around, you can too. It's why I'm on this journey to empower others to heal through a holistic approach. One that honors the whole self: body, mind, and soul.</p>
+        <p>My mission is simple: to help you reconnect with your body's wisdom and access the strongest foundation possible to build the rest of yourself and your life on... So you can live your happiest, most fulfilling life.</p>
+        <p>If any of this resonates, I'd love to have you in the circle.</p>
+        <p>Come. Let's unlock your body's healing power together.</p>
       </div>
     </div>
   </div>
@@ -918,25 +930,25 @@
         </tbody>
       </table>
     </div>
-    <p class="eb-note">Early bird pricing is available for the first 6 spots per format.</p>
+    <p class="eb-note">Early bird pricing is available only for the first 6 spots per format.</p>
     <div class="inc-wrap">
       <div class="inc-block">
         <h4>What's included for everyone:</h4>
         <ul class="inc-list">
-          <li>6 weeks of guided TRE in a group of 6</li>
+          <li>6 weeks of guided TRE™ in a group of 6</li>
           <li><strong>Private WhatsApp community</strong> for the duration of the program</li>
-          <li><strong>Decoding Your Body: Part I</strong> — free guide, yours to keep</li>
+          <li><strong>Decoding Your Body: Part I</strong>, a free guide, yours to keep and refer to on-demand</li>
         </ul>
       </div>
       <div class="inc-block">
         <h4>In-person participants also receive:</h4>
         <ul class="inc-list">
-          <li><strong>Somatic Circles Digital Self-Paced Workshop</strong> — a complete recorded program to deepen your practice at your own pace</li>
+          <li><strong>Body-Mind Wisdom™ Bootcamp</strong>, a digital self-paced program to deepen your practice and understanding of psychosomatics at your own pace, with life-time access!</li>
         </ul>
       </div>
     </div>
     <div class="center">
-      <a href="#claim-your-spot" class="btn btn-plum">Claim Your Spot</a>
+      <a href="https://link.holistichealingwithb.com/scorglpinvest" class="btn btn-plum">Reserve Your Seat Today</a>
     </div>
   </div>
 </section>
@@ -949,38 +961,27 @@
   <div class="wrap">
     <h2 class="sh">In Good Company</h2>
     <div class="logo-row">
-      <div class="logo-ph">TRE</div>
-      <div class="logo-ph">Atomic Heart<br>Academy</div>
-      <div class="logo-ph">Sprihaa<br>Wellness</div>
+      <img src="Logo_TRE.svg" alt="TRE™" class="logo-img" loading="lazy">
+      <img src="Logo_Atomic%20Heart%20Academy.svg" alt="Atomic Heart Academy" class="logo-img" loading="lazy">
     </div>
     <div class="stats-grid">
       <div class="stat">
         <span class="stat-n">2,200+</span>
-        <span class="stat-l">Lives impacted</span>
+        <span class="stat-l">Lives Impacted</span>
       </div>
       <div class="stat">
         <span class="stat-n">33+</span>
-        <span class="stat-l">Live workshops delivered</span>
+        <span class="stat-l">Live Workshops Delivered</span>
       </div>
       <div class="stat">
         <span class="stat-n">6</span>
-        <span class="stat-l">Years of coaching experience</span>
+        <span class="stat-l">Years of Coaching Experience</span>
       </div>
       <div class="stat">
         <span class="stat-n">4.3</span>
         <span class="stat-l">Rated on Trustpilot</span>
       </div>
-      <div class="stat">
-        <span class="stat-n">3</span>
-        <span class="stat-l">Countries — India, the US &amp; Zambia</span>
-      </div>
     </div>
-    <ul class="cert-list">
-      <li>Certified TRE Provider <em>(certification body, May 2025)</em></li>
-      <li>Certified Hypnotherapist, Sprihaa Wellness</li>
-      <li>Certified Life Coach</li>
-    </ul>
-    <p class="priv">Your details are safe with us. We do not share or sell your information.</p>
   </div>
 </section>
 
@@ -990,11 +991,11 @@
 ══════════════════════════════════════ -->
 <section class="section center" id="reciprocity">
   <div class="wrap">
-    <h2 class="sh">Not Ready Yet? Start Here.</h2>
+    <h2 class="sh">Not Sure Yet? Start Here.</h2>
     <p>If you're curious but not ready to commit, this is for you.</p>
     <p><em>Decoding Your Body: Part I</em> is a free guide that introduces you to the language your body has been speaking all along, and why learning to listen to it changes everything.</p>
-    <p>No program required. No obligation. Just a first step toward understanding what your body has been trying to tell you.</p>
-    <a href="#claim-your-spot" class="btn btn-ghost">Get Your Free Guide</a>
+    <p>0 obligations, and a first step toward understanding what your body has been trying to tell you.</p>
+    <a href="https://link.holistichealingwithb.com/scorglpfreebie" class="btn btn-ghost">Get Your Free Guide</a>
   </div>
 </section>
 
@@ -1006,40 +1007,68 @@
   <div class="wrap">
     <h2 class="sh">Frequently Asked Questions</h2>
     <details>
-      <summary>Who can benefit from Somatic Circles?</summary>
-      <p class="faq-ans">Anyone carrying chronic stress, tension, physical discomfort, or emotional patterns that haven't shifted through conventional approaches. No prior experience with somatic work is required.</p>
+      <summary>Who can benefit from Somatic Circles™?</summary>
+      <p class="faq-ans">Anyone who has experienced stress, tension, or trauma can benefit from TRE™. It's especially helpful for individuals dealing with chronic stress, anxiety, physical tension, or past trauma. TRE™ is also widely used across the globe by healthcare professionals, first responders (emergency workers), athletes, and individuals in high-stress environments.</p>
     </details>
     <details>
-      <summary>Do I need any prior experience with TRE?</summary>
-      <p class="faq-ans">No. Somatic Circles is designed to take you from zero to confident practitioner over 6 weeks. You'll learn everything you need from the ground up.</p>
+      <summary>Do I need any prior experience with any therapy or TRE™?</summary>
+      <p class="faq-ans">Not at all. Somatic Circles™ is designed to take you from zero to confident practitioner over 6 weeks. You'll learn everything you need from the ground up and you'll have plenty of opportunity to practice till you are confident.</p>
     </details>
     <details>
-      <summary>Is this therapy?</summary>
-      <p class="faq-ans">No. Somatic Circles is a coaching and education program. TRE is a self-regulation practice, not a clinical treatment. If you are currently under psychiatric care, please consult your provider before joining.</p>
+      <summary>Is this trauma therapy?</summary>
+      <p class="faq-ans">Somatic Circles™ is a coaching and educational program, and TRE™ is a body-based self-regulation practice. TRE™ can support trauma release processes in the body, but it should not be used as a substitute for psychotherapy, medical care, or trauma treatment. It can complement these modalities very nicely. If you are currently under psychiatric care, please consult your provider before joining.</p>
+    </details>
+    <details>
+      <summary>Is this considered medical treatment?</summary>
+      <p class="faq-ans">No. TRE™ is not positioned as a medical solution yet. However it is worth mentioning that many practitioners do report evidence of chronic tension and pain reducing/disappearing over time as their nervous system works to heal the body from within.</p>
+    </details>
+    <details>
+      <summary>Can I do this if I am in therapy?</summary>
+      <p class="faq-ans">Yes, absolutely. TRE™ can complement talk therapy by addressing physiological stress patterns alongside cognitive work.</p>
+    </details>
+    <details>
+      <summary>Is TRE™ safe?</summary>
+      <p class="faq-ans">Yes, TRE™ is safe for most people when practiced responsibly. It's a self-guided process, and individuals can stop or modify the exercises if they feel uncomfortable. However, those with severe trauma or medical conditions should consult us before signing up — write to us at coach (at) holistichealingwithb (dot) com or WhatsApp us at +91-8088015825.</p>
     </details>
     <details>
       <summary>How long are the sessions?</summary>
-      <p class="faq-ans">Each session is 90 minutes, once a week for 6 weeks.</p>
+      <p class="faq-ans">Each session is 90 minutes, once a week, for 6 weeks.</p>
     </details>
     <details>
       <summary>What's the difference between online and in-person?</summary>
-      <p class="faq-ans">The content and experience are the same. In-person participants additionally receive the Somatic Circles digital self-paced workshop as a bonus. In-person sessions are held in Bangalore.</p>
+      <p class="faq-ans">The content and experience are mostly the same, except for the physical environment. Online participants can join from the comfort of their own home. In-person participants get to meet their group physically and additionally receive the Body-Mind Wisdom™ digital self-paced bootcamp as a bonus.<br><br>In-person sessions are currently held only in Bangalore. Want in-person sessions in your city? Write to us at coach (at) holistichealingwithb (dot) com.</p>
     </details>
     <details>
       <summary>How many people are in each group?</summary>
-      <p class="faq-ans">6 people maximum. This is intentional — the small container is part of what makes the work possible.</p>
+      <p class="faq-ans">6 people maximum. The small container is part of what makes the work effective and possible.</p>
     </details>
     <details>
       <summary>What if I miss a session?</summary>
-      <p class="faq-ans">Sessions are not recorded, as the live group dynamic is central to the experience. If you miss a session, your facilitator will send you a summary of what was covered and you can continue with the group the following week.</p>
+      <p class="faq-ans">The live group dynamic is central to the experience and so recordings of sessions are not provided. If you need to miss a session, please get in touch with your facilitator. We advise not missing any sessions for your own benefit and smooth learning process.</p>
     </details>
     <details>
       <summary>When does the next cohort start?</summary>
-      <p class="faq-ans">Dates will be announced once spots are confirmed. Early bird pricing is available now — securing your spot locks in your rate regardless of the start date.</p>
+      <p class="faq-ans">The first 6 circles begin in late May and early June. Early bird pricing is available now for only the first 6 spots each of the online and offline formats. Secure your spot today!</p>
+    </details>
+    <details>
+      <summary>How long do I need to practice for each day?</summary>
+      <p class="faq-ans">TRE™ does not need to be a daily practice. Initially, it's enough to do it 1–2x per week. The exercises may take 15–20 mins, and then tremoring for about 10 mins.<br><br>As you get comfortable with the process and your body can access the tremor mechanism easily, you might find you just tremor for a couple minutes on a particular day and you're good to go. You can tremor as often as you feel your body needs.<br><br>The body is the best guide for how often to practice, and how long your practice should be on a given day.</p>
+    </details>
+    <details>
+      <summary>How long do I need to practice TRE™ to see changes?</summary>
+      <p class="faq-ans">TRE™ can be a life-long practice. :) Change happens through regular practice of TRE™, not how intense a practice session is.<br><br>Some people begin noticing major shifts after just 4 weeks, many around 8 weeks. For others, it may take longer, depending on their body.<br><br>The nervous system unlearns and relearns safety gradually, so it's really important to be patient, not judge your body, and just listen to what it needs. :)</p>
     </details>
     <details>
       <summary>What equipment or space do I need?</summary>
-      <p class="faq-ans">For online participants, a quiet space with enough room to lie down on a mat. A yoga mat is ideal but not required. A stable internet connection for video calls.</p>
+      <p class="faq-ans">For online participants, a mobile or laptop to join the session from a quiet space. A yoga mat is ideal but not required. A stable internet connection will be required as you will need to have your video on, so that your facilitator can see you and give you feedback.</p>
+    </details>
+    <details>
+      <summary>Will I lose control while tremoring?</summary>
+      <p class="faq-ans">The tremor response is always fully within your control, and can be stopped at any time you feel uncomfortable. You will be guided to listen to your body and build capacity gradually.</p>
+    </details>
+    <details>
+      <summary>What if I am skeptical of somatic release?</summary>
+      <p class="faq-ans">It's natural to feel skeptical about trying something new. TRE™ is backed by research and has helped hundreds of thousands of people worldwide reduce stress and tension. The process is gentle, self-guided, and doesn't require belief to work. Your body's natural tremoring mechanism simply activates as a physical response.<br><br>You can start slowly, observe how your body reacts, and stop at any time if you feel uncomfortable. Many individuals who were initially skeptical have found it to be a powerful and transformative practice.</p>
     </details>
   </div>
 </section>
@@ -1051,14 +1080,14 @@
 <section class="section center" id="cost">
   <div class="wrap">
     <h2 class="sh">What Does It Cost to Stay Where You Are?</h2>
-    <div class="cost-lines">
-      <p>Not in rupees. In life.</p>
-      <p>Another year of tension that won't leave your body.</p>
-      <p>Another relationship conversation that never happens.</p>
-      <p>Another low that sends you reaching for something that doesn't really help.</p>
-      <p>Another morning you wake up and nothing has changed.</p>
-    </div>
-    <p class="cost-kicker">The program is 6 weeks.<br>The patterns you'd be releasing have been with you for years. Maybe decades.<br><br>That's the real cost comparison.</p>
+    <p class="closing-q">Not in currency, but in life experience.</p>
+    <p>Another year of stored discomfort that won't leave your body.</p>
+    <p>Another relationship milestone that's missed.</p>
+    <p>Another low that sends you spiraling for something that doesn't really help.</p>
+    <p>Another morning you wake up feeling stuck and helpless and like nothing has changed.</p>
+    <p class="closing-q">That's the real cost of doing nothing.</p>
+    <p>Or you can show up for 6 weeks and begin to release what your body has been carrying unknown to you, for a stronger life-long foundation.</p>
+    <p class="closing-q">The choice is yours.</p>
   </div>
 </section>
 
@@ -1069,10 +1098,10 @@
 <section id="final-cta" class="center">
   <div class="wrap">
     <h2 class="sh">Ready to Begin?</h2>
-    <p>Your nervous system already knows how to heal. It just needs the right conditions.</p>
-    <p>Somatic Circles gives it those conditions, in a small, safe group, over 6 weeks, with guidance every step of the way.</p>
-    <a href="#claim-your-spot" class="btn btn-white" id="claim-your-spot">Claim Your Spot</a>
-    <span class="spots">6 spots per format &nbsp;·&nbsp; Early bird pricing available now</span>
+    <p>Your body already knows how to heal. It just needs the right conditions.</p>
+    <p>Somatic Circles™ does exactly this, with guidance every step of the way.</p>
+    <a href="https://link.holistichealingwithb.com/scorglpfooter" class="btn btn-white" id="claim-your-spot">Your Seat In Somatic Circles™ Awaits You</a>
+    <span class="spots">Limited spots &nbsp;·&nbsp; Early bird pricing available now</span>
   </div>
 </section>
 
@@ -1082,8 +1111,10 @@
 ══════════════════════════════════════ -->
 <footer>
   <strong>Somatic Circles™</strong>
-  <span>© 2025 Atomic Heart Academy. All rights reserved.</span>
+  <span>© 2026 Atomic Heart Academy. All rights reserved.</span>
 </footer>
 
+
+<script>lucide.createIcons();</script>
 </body>
 </html>
