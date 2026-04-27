@@ -234,7 +234,7 @@
        PADMA V. PULL QUOTE
     ═══════════════════════════════════ */
     #padma {
-      background: var(--cream-alt);
+      background: var(--white);
       padding: 72px 24px;
     }
     .pq-wrap { max-width: 680px; margin: 0 auto; }
@@ -288,6 +288,25 @@
     /* ═══════════════════════════════════
        8. EXCLUSIVITY
     ═══════════════════════════════════ */
+    .excl-benefits {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 720px;
+      margin: 32px auto 44px;
+    }
+    .excl-benefit {
+      background: var(--white);
+      border-radius: 4px;
+      padding: 28px 20px;
+      font-family: 'Lato', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      font-style: normal;
+      line-height: 1.6;
+      color: var(--charcoal);
+    }
+
     .excl-body {
       max-width: 600px;
       margin: 0 auto 44px;
@@ -358,17 +377,18 @@
       display: grid;
       grid-template-columns: 360px 1fr;
       grid-template-areas:
-        "photo title"
+        "title body"
         "photo body";
       column-gap: 64px;
       align-items: start;
     }
     .about-photo-wrap { grid-area: photo; display: flex; align-items: center; }
-    .about-title { grid-area: title; }
+    .about-title { grid-area: title; text-align: center; }
     .about-body { grid-area: body; }
     .about-photo {
       width: 100%;
-      height: auto;
+      height: 550px;
+      object-fit: cover;
       display: block;
       border-radius: 8px;
     }
@@ -618,7 +638,7 @@
 <section id="hero">
   <span class="hero-pre">Atomic Heart Academy presents</span>
   <h1 class="hero-h1">Somatic Circles™</h1>
-  <p class="hero-sub">Your body has been holding unhelpful patterns. It's time to let them go.</p>
+  <p class="hero-sub">Your body has been holding all of it.<br>It's finally time to let it go.</p>
   <a href="https://link.holistichealingwithb.com/scorglpabfold" class="btn btn-plum">Claim Your Seat</a>
 </section>
 
@@ -682,7 +702,7 @@
         <p>You wonder quietly if this is just who you are, and whether you can actually do something about it.</p>
       </div>
     </div>
-    <p class="insight center">All of these are long-standing patterns held in your nervous system from before you had the words to express what you feel.<br>Insights got you this far, but only the body knows how to settle what it still holds.</p>
+    <p class="insight center">All of these are long-standing patterns <strong>held in your nervous system</strong> from before you had the words to express what you feel.<br>Insights got you this far, but only the body knows how to settle what it still holds.</p>
     <div class="center">
       <a href="https://link.holistichealingwithb.com/scorglpprob" class="btn btn-plum">I'm Ready to Break These Patterns at the Root</a>
     </div>
@@ -758,12 +778,12 @@
       </div>
       <div class="ben-item">
         <i data-lucide="scale"></i>
-        <h4>Balance and Well-Being</h4>
+        <h4>Balanced Relationships and Well-Being</h4>
         <p>Not the kind that comes externally from doing more of the "right" things. The kind that comes internally from your system finally working with you. Grounded, centered, and steady, as your default baseline.</p>
       </div>
       <div class="ben-item">
         <i data-lucide="wind"></i>
-        <h4>Emotional Freedom</h4>
+        <h4>Emotional Freedom and Presence</h4>
         <p>The emotions that used to flood you or shut you down become more workable. You become available to feel them without being consumed by them. You move through them instead of around them.</p>
       </div>
       <div class="ben-item">
@@ -826,8 +846,12 @@
     <h2 class="sh">This Is a Small Container.<br>By Intentional Design.</h2>
     <div class="excl-body">
       <p>Somatic Circles™ runs with a maximum of 6 people per group. Not as a marketing tactic, but because this work requires safety, and safety requires intimacy.</p>
-      <p>In a group this size, it's harder to be just some face in a crowd. You have the space to meet others on similar journeys. You can receive and give meaningful support. The group becomes part of your healing.</p>
-      <p>Only 6 circles this May–June (3 offline in Bengaluru, 3 online for everyone around the globe). 6 spots for each circle.</p>
+      <div class="excl-benefits">
+        <div class="excl-benefit">Meet others on similar journeys as yours.</div>
+        <div class="excl-benefit">Receive and give meaningful support.</div>
+        <div class="excl-benefit">Find your people and know you're not alone.</div>
+      </div>
+      <p>Only <strong>6 circles</strong> this May–June 2026.<br>(3 offline in Bengaluru, 3 online for everyone around the globe).<br><br><strong>6 spots</strong> for each circle.</p>
       <p>Once these fill, we close enrollments. The next cohort only begins later in 2026.</p>
       <p>If you've been waiting for the right moment, this is a good one to take seriously.</p>
     </div>
@@ -864,7 +888,7 @@
         <cite>Aastha, RJ, India</cite>
       </div>
       <div class="t-card">
-        <blockquote>"Within a few minutes of our conversation she took me to a place where I usually feel hesitant to go. The process immediately made me feel lighter, felt like a mass disappearing from my head. The world needs you."</blockquote>
+        <blockquote>"Within a few minutes of our conversation she took me to a place where I usually feel hesitant to go. The process immediately made me feel lighter, felt like a mass disappearing from my head."</blockquote>
         <cite>Sarika, TN, India</cite>
       </div>
     </div>
@@ -906,7 +930,7 @@
 ══════════════════════════════════════ -->
 <section class="section alt" id="pricing">
   <div class="wrap">
-    <h2 class="sh">Your Investment</h2>
+    <h2 class="sh">One Decision Now. A New You After.</h2>
     <div class="p-table-wrap">
       <table class="p-table">
         <thead>
@@ -993,9 +1017,9 @@
   <div class="wrap">
     <h2 class="sh">Not Sure Yet? Start Here.</h2>
     <p>If you're curious but not ready to commit, this is for you.</p>
-    <p><em>Decoding Your Body: Part I</em> is a free guide that introduces you to the language your body has been speaking all along, and why learning to listen to it changes everything.</p>
-    <p>0 obligations, and a first step toward understanding what your body has been trying to tell you.</p>
-    <a href="https://link.holistichealingwithb.com/scorglpfreebie" class="btn btn-ghost">Get Your Free Guide</a>
+    <p><strong><em>Decoding Your Body: Part I</em></strong> is a free guide that introduces you to the language your body has been speaking all along, and walks you through 8 common physical ailments through the lens of emotional and mental wellbeing, so you can start connecting the dots between how you feel inside and what shows up in your body.</p>
+    <p>Zero obligations, and a first step toward understanding what your body has been trying to tell you all along.</p>
+    <a href="https://link.holistichealingwithb.com/scorglpfreebie" class="btn btn-ghost" style="margin-top:32px;">Get Your Free Guide</a>
   </div>
 </section>
 
@@ -1081,12 +1105,12 @@
   <div class="wrap">
     <h2 class="sh">What Does It Cost to Stay Where You Are?</h2>
     <p class="closing-q">Not in currency, but in life experience.</p>
-    <p>Another year of stored discomfort that won't leave your body.</p>
-    <p>Another relationship milestone that's missed.</p>
-    <p>Another low that sends you spiraling for something that doesn't really help.</p>
-    <p>Another morning you wake up feeling stuck and helpless and like nothing has changed.</p>
+    <p style="display:flex;align-items:flex-start;justify-content:center;"><i data-lucide="alert-circle" style="flex-shrink:0;width:20px;height:20px;margin-top:5px;margin-right:10px;color:var(--rose);"></i>Another year of stored discomfort that won't leave your body.</p>
+    <p style="display:flex;align-items:flex-start;justify-content:center;"><i data-lucide="alert-circle" style="flex-shrink:0;width:20px;height:20px;margin-top:5px;margin-right:10px;color:var(--rose);"></i>Another relationship milestone that's missed.</p>
+    <p style="display:flex;align-items:flex-start;justify-content:center;"><i data-lucide="alert-circle" style="flex-shrink:0;width:20px;height:20px;margin-top:5px;margin-right:10px;color:var(--rose);"></i>Another low that sends you spiraling for something that doesn't really help.</p>
+    <p style="display:flex;align-items:flex-start;justify-content:center;"><i data-lucide="alert-circle" style="flex-shrink:0;width:20px;height:20px;margin-top:5px;margin-right:10px;color:var(--rose);"></i>Another morning you wake up feeling stuck and helpless and like nothing has changed.</p>
     <p class="closing-q">That's the real cost of doing nothing.</p>
-    <p>Or you can show up for 6 weeks and begin to release what your body has been carrying unknown to you, for a stronger life-long foundation.</p>
+    <p style="font-size:18px;"><strong>Or you can show up for 6 weeks and begin to release what your body has been carrying unawares, for a stronger life-long foundation.</strong></p>
     <p class="closing-q">The choice is yours.</p>
   </div>
 </section>
