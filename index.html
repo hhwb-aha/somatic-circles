@@ -279,11 +279,11 @@
       padding: 24px;
     }
     .inside-card h4 { font-size: 18px; margin-bottom: 6px; }
-    .inside-card p  { font-size: 14px; color: var(--soft); line-height: 1.7; margin-bottom: 0; }
+    .inside-card p  { font-size: 13px; color: var(--soft); line-height: 1.7; margin-bottom: 0; }
 
     .fmt-table { width: 100%; border-collapse: collapse; }
     .fmt-table tr { border-bottom: 1px solid var(--rose-light); }
-    .fmt-table td { padding: 14px 0; font-size: 15px; vertical-align: top; }
+    .fmt-table td { padding: 14px 0; font-size: 15px; vertical-align: middle; }
     .fmt-table td:first-child {
       font-family: 'Lato', sans-serif;
       font-size: 10px;
@@ -293,6 +293,39 @@
       color: var(--rose);
       width: 130px;
       padding-right: 16px;
+    }
+
+    /* ═══════════════════════════════════
+       CHOOSE YOUR CIRCLE GRID
+    ═══════════════════════════════════ */
+    .circles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+    .circles-grid > div {
+      background: var(--white);
+      border-top: 3px solid var(--rose);
+      border-radius: 2px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+    .circles-grid h4 {
+      font-size: 22px;
+      padding-bottom: 10px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--rose);
+    }
+    .circles-grid > div > p:not(.circle-time) { margin-bottom: 0; }
+    .circle-time {
+      font-size: 15px;
+      font-style: italic;
+      color: var(--soft);
+      line-height: 1.7;
+      margin-top: 16px;
+      margin-bottom: 0;
     }
 
     /* ═══════════════════════════════════
@@ -408,7 +441,7 @@
     /* ── Problem section ── */
     .prob-grid {
       display: grid;
-      grid-template-columns: 300px 1fr;
+      grid-template-columns: 1fr 370px;
       gap: 64px;
       align-items: start;
     }
@@ -516,6 +549,27 @@
     .stat-l { font-size: 12px; color: var(--soft); line-height: 1.4; }
 
     /* ═══════════════════════════════════
+       B2B SECTION
+    ═══════════════════════════════════ */
+    .b2b-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    @media (max-width: 780px) {
+      .b2b-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    /* ═══════════════════════════════════
+       5. SOLUTION  (dark bg)
+    ═══════════════════════════════════ */
+    #solution { background: var(--plum); }
+    #solution .sh { color: var(--white); }
+    #solution p:not(.sol-hl) { color: rgba(255,255,255,.82); }
+    #solution .sol-hl { background: var(--cream); color: var(--charcoal); }
+
+    /* ═══════════════════════════════════
        13. RECIPROCITY  (dark bg)
     ═══════════════════════════════════ */
     #reciprocity { background: var(--plum); }
@@ -600,6 +654,12 @@
     /* ═══════════════════════════════════
        RESPONSIVE
     ═══════════════════════════════════ */
+    @media (min-width: 781px) {
+      #solution .sh         { margin-bottom: 50px; }
+      #solution .sol-hl     { margin-bottom: 50px; }
+      #solution p + .sol-hl { margin-top: 50px; }
+    }
+
     @media (max-width: 780px) {
       .section { padding: 64px 20px; }
 
@@ -607,8 +667,6 @@
         grid-template-columns: 1fr;
         gap: 32px;
       }
-      .prob-img-wrap { order: 2; }
-      .prob-text     { order: 1; }
 
       .pain-grid,
       .ben-grid,
@@ -628,6 +686,9 @@
       .about-photo-wrap { max-width: 280px; margin: 0 auto; }
 
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      #solution .sol-hl { margin-bottom: 40px; }
+      #solution p + .sol-hl { margin-top: 40px; }
+      .circles-grid { grid-template-columns: 1fr; }
 
       #padma { padding: 56px 20px; }
       .pq { padding-left: 24px; }
@@ -659,15 +720,15 @@
 <section class="section" id="problem">
   <div class="wrap-wide">
     <div class="prob-grid">
-      <div class="prob-img-wrap">
-        <img src="Bhavya%201.png" alt="Bhavya R" class="prob-photo" loading="lazy">
-      </div>
       <div class="prob-text">
         <h2 class="sh">You've Done The Work. So Why Are You Still Stuck?</h2>
         <p>You've read the books. You've done the therapy. You've tried the practices and have more self-awareness than most people around you.</p>
         <p>And yet, in the moments that matter, you still react the same way despite your best intentions. The tension comes back. Your old habits win again. You repeat the same cycle.</p>
         <p>Each time, you promise yourself you'll be different. And each time, something takes over that you can't seem to control.</p>
         <p class="closing-q">How long have you been here?</p>
+      </div>
+      <div class="prob-img-wrap">
+        <img src="Bhavya%204.png" alt="Bhavya R" class="prob-photo" loading="lazy">
       </div>
     </div>
   </div>
@@ -744,7 +805,7 @@
     <p>Watch any animal after a threatening encounter. They shake involuntarily. Then they move on, completely settled. No therapy. No processing. No effort.</p>
     <p>That shaking is the nervous system completing its stress cycle and returning to baseline.</p>
     <p>Humans have the same release mechanism. We've just spent a lifetime learning to suppress it.</p>
-    <p class="sol-hl">In the safe, guided environment of Somatic Circles™, you learn to access and reactivate that mechanism on-demand. Your body can gently release what it has been holding for years, finally freeing up your nervous system for a new identity to unfold. Over time, your baseline shifts and your capacity expands. The things that used to send you spiraling start to lose their grip. You become harder to dysregulate, easier to be with, and more present in your own life.</p>
+    <p class="sol-hl">In the safe, guided environment of Somatic Circles™, you learn to access and reactivate that mechanism on-demand. Your body can <strong>gently release</strong> what it has been holding for years, finally freeing up your nervous system for a new identity to unfold. Over time, your baseline shifts and your <strong>capacity expands</strong>. The things that used to send you spiraling start to lose their grip. You become <strong>harder to dysregulate</strong>, easier to be with, and more present in your own life.</p>
     <p>You don't need to relive anything. You don't need to talk about it. You just need to allow your body to do the work.</p>
     <p>Your body already knows what to release. It just needs your permission to do so.</p>
   </div>
@@ -837,11 +898,13 @@
     </div>
     <table class="fmt-table">
       <tbody>
-        <tr><td>Format</td><td>One 90-minute session per week</td></tr>
-        <tr><td>Where</td><td>Online via Zoom</td></tr>
-        <tr><td>Group size</td><td>6 people maximum</td></tr>
-        <tr><td>Support</td><td>Private WhatsApp group between sessions to share, and stay accountable and motivated</td></tr>
+        <tr><td>Format</td><td>Online via Zoom</td></tr>
+        <tr><td>Frequency</td><td>One 90-minute session each week</td></tr>
         <tr><td>Duration</td><td>6 weeks</td></tr>
+        <tr><td>Group size</td><td>Up to 6 people</td></tr>
+        <tr><td>Support</td><td>Private WhatsApp group between sessions for support, shares, accountability and motivation</td></tr>
+        <tr><td>Bonus #1</td><td><em>Decoding Your Body: Part I</em>, a free guide, yours to keep and refer to on-demand</td></tr>
+        <tr><td>Bonus #2</td><td><em>Body-Mind Wisdom™ Bootcamp</em>, a digital self-paced program to deepen your practice and understanding of psychosomatics at your own pace, with life-time access!</td></tr>
       </tbody>
     </table>
   </div>
@@ -855,46 +918,53 @@
   <div class="wrap-wide">
     <h2 class="sh center" style="color:var(--white);">Choose Your Circle.</h2>
     <p style="max-width:620px;margin:0 auto 28px;text-align:center;color:rgba(255,255,255,.82);">Each circle runs on the same TRE foundation. The difference is who you're in the room with, and what you're working through together.</p>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:36px;">
+    <div class="circles-grid">
 
-      <div style="background:var(--white);border-top:3px solid var(--rose);border-radius:2px;padding:20px 20px;display:flex;flex-direction:column;">
-        <h4 style="font-size:17px;margin-bottom:10px;">The Grounded Therapist Circle</h4>
-        <p style="font-size:13px;color:var(--soft);line-height:1.7;flex:1;">You're a mental health professional: a therapist, psychologist, or coach who holds space for others all day. This circle gives you a practice to walk into every session grounded and present, and reset any heaviness after a long workday.</p>
-        <a href="https://link.holistichealingwithb.com/scorglpwiifm" class="btn btn-outline" style="font-size:10px;padding:10px 16px;margin-top:16px;align-self:flex-start;">Become a Grounded Therapist</a>
+      <div>
+        <h4>The Grounded Therapist Circle</h4>
+        <p style="font-size:13px;color:var(--soft);line-height:1.7;flex:1;">You hold space for others all day as a therapist or coach. By the time your last session ends, your own nervous system has absorbed so much. This circle helps you master a practice to walk into every session grounded and present, and also let go of any heaviness after a long workday.</p>
+        <p class="circle-time">Mondays, 10–11:30AM IST</p>
+        <a href="https://link.holistichealingwithb.com/circle-therapist" class="btn btn-outline" style="font-size:10px;padding:10px 16px;margin-top:16px;align-self:flex-start;">Become a Grounded Therapist</a>
       </div>
 
-      <div style="background:var(--white);border-top:3px solid var(--rose);border-radius:2px;padding:20px 20px;display:flex;flex-direction:column;">
-        <h4 style="font-size:17px;margin-bottom:10px;">The Body Mastery Circle</h4>
-        <p style="font-size:13px;color:var(--soft);line-height:1.7;flex:1;">You've tried the treatments, the therapies, the diagnoses. The pain or discomfort eases, then returns. This circle works at the level of the nervous system, where persistent physical symptoms often have their deeper roots.</p>
-        <a href="https://link.holistichealingwithb.com/scorglpwiifm" class="btn btn-outline" style="font-size:10px;padding:10px 16px;margin-top:16px;align-self:flex-start;">Heal Your Body</a>
+      <div>
+        <h4>The Body Mastery Circle</h4>
+        <p style="font-size:13px;color:var(--soft);line-height:1.7;flex:1;">You've done the tests, the therapies, the treatments, but if your body keeps sending the same signals despite every intervention, it's worth asking what might be held deeper in your nervous system. This circle works exactly at that level, and gives your body a channel to release what hasn't shifted yet.</p>
+        <p class="circle-time">Tuesdays, 8–9:30PM IST</p>
+        <a href="https://link.holistichealingwithb.com/circle-mastery" class="btn btn-outline" style="font-size:10px;padding:10px 16px;margin-top:16px;align-self:flex-start;">Heal Your Body</a>
       </div>
 
-      <div style="background:var(--white);border-top:3px solid var(--rose);border-radius:2px;padding:20px 20px;display:flex;flex-direction:column;">
-        <h4 style="font-size:17px;margin-bottom:10px;">The Embodied Clinician Circle</h4>
-        <p style="font-size:13px;color:var(--soft);line-height:1.7;flex:1;">You have a phenomenal understanding of the human body in medical terms. This circle invites you to explore it somatically and unlock a different perspective, through your own direct experience of neurogenic tremors.</p>
-        <a href="https://link.holistichealingwithb.com/scorglpwiifm" class="btn btn-outline" style="font-size:10px;padding:10px 16px;margin-top:16px;align-self:flex-start;">Experience Somatic Release</a>
+      <div>
+        <h4>The Embodied Clinician Circle</h4>
+        <p style="font-size:13px;color:var(--soft);line-height:1.7;flex:1;">You have a phenomenal understanding of the human body, as well as the range and limits of medical interventions. This circle invites you to explore a research-backed technique used by healthcare professionals worldwide to unlock a different perspective through your own direct experience of neurogenic tremors.</p>
+        <p class="circle-time">Wednesdays, 8–9:30PM IST</p>
+        <a href="https://link.holistichealingwithb.com/circle-clinician" class="btn btn-outline" style="font-size:10px;padding:10px 16px;margin-top:16px;align-self:flex-start;">Experience Somatic Release</a>
       </div>
 
-      <div style="background:var(--white);border-top:3px solid var(--rose);border-radius:2px;padding:20px 20px;display:flex;flex-direction:column;">
-        <h4 style="font-size:17px;margin-bottom:10px;">The Present Mother Circle</h4>
-        <p style="font-size:13px;color:var(--soft);line-height:1.7;flex:1;">You give more than most people see. This circle enables you with a simple technique to regulate after a stressful day, so you can meet your children and partner with your nurturing presence.</p>
-        <a href="https://link.holistichealingwithb.com/scorglpwiifm" class="btn btn-outline" style="font-size:10px;padding:10px 16px;margin-top:16px;align-self:flex-start;">Become a Present Mother</a>
+      <div>
+        <h4>The Present Father Circle</h4>
+        <p style="font-size:13px;color:var(--soft);line-height:1.7;flex:1;">You face so much more at work than you're willing to talk about. But once you're home, your kids feel your nervous system before they hear your words. This circle gives you a place to release what accumulates, so your family can experience your regulated, grounded presence that they always feel safe and "at home" with.</p>
+        <p class="circle-time">Thursdays, 8–9:30PM IST</p>
+        <a href="https://link.holistichealingwithb.com/circle-dads" class="btn btn-outline" style="font-size:10px;padding:10px 16px;margin-top:16px;align-self:flex-start;">Become a Present Father</a>
       </div>
 
-      <div style="background:var(--white);border-top:3px solid var(--rose);border-radius:2px;padding:20px 20px;display:flex;flex-direction:column;">
-        <h4 style="font-size:17px;margin-bottom:10px;">The Present Father Circle</h4>
-        <p style="font-size:13px;color:var(--soft);line-height:1.7;flex:1;">You face more than you let on. And once you're home, your kids feel your nervous system before they hear your words. This circle gives you a place to release what accumulates, so your family can experience the authentic you: calm, steady, and fully there.</p>
-        <a href="https://link.holistichealingwithb.com/scorglpwiifm" class="btn btn-outline" style="font-size:10px;padding:10px 16px;margin-top:16px;align-self:flex-start;">Become a Present Father</a>
+      <div>
+        <h4>The Present Mother Circle</h4>
+        <p style="font-size:13px;color:var(--soft);line-height:1.7;flex:1;">You give tons more than most people see. But only when your nervous system has more room do you have the patience and capacity to receive and give love. This circle enables you with a simple technique to regulate after a stressful day, so you can meet your children and partner with your nurturing presence.</p>
+        <p class="circle-time">Fridays, 8–9:30PM IST</p>
+        <a href="https://link.holistichealingwithb.com/circle-moms" class="btn btn-outline" style="font-size:10px;padding:10px 16px;margin-top:16px;align-self:flex-start;">Become a Present Mother</a>
       </div>
 
-      <div style="background:var(--white);border-top:3px solid var(--rose);border-radius:2px;padding:20px 20px;display:flex;flex-direction:column;">
-        <h4 style="font-size:17px;margin-bottom:10px;">The Identity Shift Circle</h4>
-        <p style="font-size:13px;color:var(--soft);line-height:1.7;flex:1;">Major change has a way of pulling the ground out from under you. This circle gives you a body-based practice to find your footing again, so you can move through the transition without losing yourself in it.</p>
-        <a href="https://link.holistichealingwithb.com/scorglpwiifm" class="btn btn-outline" style="font-size:10px;padding:10px 16px;margin-top:16px;align-self:flex-start;">Find Your Ground</a>
+      <div>
+        <h4>The Identity Shift Circle</h4>
+        <p style="font-size:13px;color:var(--soft);line-height:1.7;flex:1;">Major life changes - relationships, career, finances - have a way of pulling the ground out from under you. This circle gives you a body-based practice to find your footing again, so you can move through the uncertainty without losing yourself in it.</p>
+        <p class="circle-time">Saturdays, 10–11:30AM IST</p>
+        <a href="https://link.holistichealingwithb.com/circle-identity" class="btn btn-outline" style="font-size:10px;padding:10px 16px;margin-top:16px;align-self:flex-start;">Find Your Ground</a>
       </div>
 
     </div>
-    <p class="center" style="max-width:580px;margin:0 auto 16px;color:rgba(255,255,255,.82);">Somatic Circles™ runs with a <strong style="color:var(--white);">maximum of 6 people</strong> per circle.<br>Not as a marketing tactic, but because this work requires safety, and safety requires intimacy.</p>
+    <p class="center" style="max-width:580px;margin:0 auto 8px;color:rgba(255,255,255,.82);">Somatic Circles™ runs with a <strong style="color:var(--white);">maximum of 6 people</strong> per circle.</p>
+    <p class="center" style="max-width:580px;margin:0 auto 16px;color:rgba(255,255,255,.82);">Not as a marketing tactic, but because this work requires safety, and safety requires intimacy.</p>
     <p class="center" style="max-width:580px;margin:0 auto 16px;color:rgba(255,255,255,.82);">Once a circle fills, enrollment closes. The next cohort opens later in 2026.</p>
     <p class="center" style="max-width:580px;margin:0 auto;color:var(--white);font-weight:700;">Get your seat today!</p>
   </div>
@@ -992,7 +1062,7 @@
         <h4>What's included in every circle:</h4>
         <ul class="inc-list">
           <li>6 weeks of guided TRE™ in a group of 6</li>
-          <li><strong>Private WhatsApp community</strong> for the duration of the program</li>
+          <li><strong>Private WhatsApp community</strong></li>
           <li><strong>Decoding Your Body: Part I</strong>, a free guide, yours to keep and refer to on-demand</li>
           <li><strong>Body-Mind Wisdom™ Bootcamp</strong>, a digital self-paced program to deepen your practice and understanding of psychosomatics at your own pace, with life-time access!</li>
         </ul>
@@ -1031,6 +1101,27 @@
       <div class="stat">
         <span class="stat-n">4.3</span>
         <span class="stat-l">Rated on Trustpilot</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     13. B2B / PROGRAM ADD-ON
+══════════════════════════════════════ -->
+<section class="section alt" id="b2b">
+  <div class="wrap-wide">
+    <h2 class="sh">Looking To Add Somatic Work To Your Program?</h2>
+    <p class="sol-hl" style="margin-bottom:40px;">Bhavya can run Somatic Circles™ inside your existing program seamlessly, so your clients get access to this wonderfully effective technique without you having to build it out yourself.</p>
+    <div class="b2b-grid">
+      <div class="b2b-body">
+        <p>If you work with clients as a coach, facilitator, or group program leader, you already understand that insight only goes so far. You know you're a great coach, but when your clients are dysregulated, they struggle to fully practice what they're learning in theory.</p>
+        <p>Somatic Circles™ gives your clients a body-based foundation that can make everything else in your program land and assimilate better, by clearing out old patterns as you teach them new things. Calmer nervous systems mean more receptive clients, deeper breakthroughs, and results that actually stick.</p>
+        <p>Interested? Just fill the form and we'll be in touch.</p>
+      </div>
+      <div class="b2b-form">
+        <iframe data-tally-src="https://tally.so/embed/rjdjal?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="396" frameborder="0" marginheight="0" marginwidth="0" title="Join the Somatic Circles Interest List"></iframe>
       </div>
     </div>
   </div>
@@ -1167,5 +1258,6 @@
 
 
 <script>lucide.createIcons();</script>
+<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
 </body>
 </html>
